@@ -14,6 +14,7 @@ const computerPlay = function() {
   return moves[Math.floor(Math.random() * moves.length)];
 };
 
+//It plays a round of the game and update the score values based on how the round went.
 const playRound = function() {
   let roundResult = '';
   let playerSelection = prompt('Make your move and pick paper, rock or scissors!').toLowerCase();
@@ -26,7 +27,7 @@ const playRound = function() {
     console.log(`You picked ${playerSelection} and the computer picked ${computerSelection}.
     ${roundResult}`);
 
-    //Player win conditions
+    //Player win conditions.
   } else if (
     (playerSelection === 'scissors' && computerSelection === 'paper') ||
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -39,7 +40,7 @@ const playRound = function() {
     console.log(`You picked ${playerSelection} and the computer picked ${computerSelection}.
     ${roundResult}`);
 
-    // Machine win conditions
+    // Machine win conditions.
   } else if (
     (computerSelection === 'scissors' && playerSelection === 'paper') ||
     (computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -50,13 +51,15 @@ const playRound = function() {
 
     console.log(`You picked ${playerSelection} and the computer picked ${computerSelection}.
     ${roundResult}`);
+    
+    // Basic "error checking".
   } else {
     console.log(`Please, enter rock, paper or scissors.`);
   }
 };
 
 // Plays 5 rounds of rock, paper and scissors and print the final results.
-const game = function() {
+const playFiveRounds = function() {
   for (let i = 1; i <= 5; i++) {
     playRound();
   }
@@ -70,4 +73,4 @@ const game = function() {
   }
 };
 
-game();
+playFiveRounds();
