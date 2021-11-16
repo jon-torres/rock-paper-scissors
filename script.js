@@ -22,8 +22,15 @@ const computerPlay = function () {
 //It plays a round of the game and update the score values based on how the round went.
 const playRound = function (event) {
   let roundResult = '';
-  playerSelection = event.target.innerText;
-  console.log(event.target.innerText);
+  if (event.target.className === 'btn btn--rock') {
+    playerSelection = 'rock';
+  } else if (event.target.className === 'btn btn--paper') {
+    playerSelection = 'paper';
+  } else {
+    playerSelection = 'scissors';
+  }
+  console.log(event.target.className);
+  console.log(event.target);
 
   const computerSelection = computerPlay();
 
