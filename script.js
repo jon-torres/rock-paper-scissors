@@ -23,7 +23,7 @@ let computerScore = 0;
 
 // the robot picks a random move between the items in the array.
 const computerPlay = function () {
-  const moves = ['&#x1FAA8;', '📄', '✂️'];
+  const moves = ['&#129704;', '📄', '✂️'];
   return moves[Math.floor(Math.random() * moves.length)];
 };
 
@@ -32,7 +32,7 @@ const playRound = function (event) {
   if (playing) {
     let roundResult = '';
     if (event.target === btnRock) {
-      playerSelection = '&#x1FAA8;';
+      playerSelection = '&#129704;';
     } else if (event.target === btnPaper) {
       playerSelection = '📄';
     } else {
@@ -54,8 +54,8 @@ const playRound = function (event) {
       //Player win conditions.
     } else if (
       (playerSelection === '✂️' && computerSelection === '📄') ||
-      (playerSelection === '&#x1FAA8;' && computerSelection === '✂️') ||
-      (playerSelection === '📄' && computerSelection === '&#x1FAA8;')
+      (playerSelection === '&#129704;' && computerSelection === '✂️') ||
+      (playerSelection === '📄' && computerSelection === '&#129704;')
     ) {
       playerScore++;
 
