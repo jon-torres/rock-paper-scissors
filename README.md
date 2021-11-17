@@ -1,4 +1,7 @@
 # rock-paper-scissors
 
-A very simple 'rock, paper and scissors' game to be played on the console.
-A graphic interface will be added to a future version.
+Responsive rock paper scissors game.
+
+It was made using vanilla html/css/JS.
+
+A "restart" button should be included in a future version. Enjoy!
