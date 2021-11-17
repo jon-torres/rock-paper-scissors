@@ -43,10 +43,9 @@ p {
   color: #414833;
   background: none;
   border: none;
-  font-family: inherit;
   font-size: 1.8rem;
   text-transform: uppercase;
-  cursor: crosshair;
+  cursor: pointer;
   font-weight: 400;
   /* transition: all 0.2s; */
 
