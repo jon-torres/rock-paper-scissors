@@ -43,7 +43,7 @@ const playRound = function (event) {
 
     // Tie
     if (playerSelection === computerSelection) {
-      roundResult = `<br>Tie! No won won this round 🤨<br>
+      roundResult = `<br>Tie! No one won this round 🤨<br>
         The current score is ${playerScore} 🆚 ${computerScore}`;
 
       resultContent(
