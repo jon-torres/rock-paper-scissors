@@ -77,7 +77,7 @@ const playRound = function (event) {
   }
   if (computerScore === 5) {
     resultContent(
-      `<p style="color:red;">🦾🤖 Too bad. the robot won 🦾🤖 <br>   
+      `<p style="color:red;">🦾🤖 Too bad. The robot won 🦾🤖 <br>   
       The final score is ${playerScore} 🆚 ${computerScore}<br>
       Refresh the page and beat the robot!</p>`
     );
