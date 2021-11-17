@@ -1,13 +1,18 @@
 'use strict';
 
 //DOM
-const container = document.querySelector('#container');
+const container = document.getElementById('container');
 const btnRock = document.querySelector('.btn--rock');
 const btnPaper = document.querySelector('.btn--paper');
 const btnScissors = document.querySelector('.btn--scissors');
 
 let pResults = document.createElement('p');
 pResults.classList.add('pResults');
+
+const resultContent = function (result) {
+  pResults.innerHTML = result;
+  container.appendChild(pResults);
+};
 
 let playerSelection;
 let playing = true;
@@ -16,9 +21,9 @@ let playing = true;
 let playerScore = 0;
 let computerScore = 0;
 
-// The computer picks a random move between the items in the array.
+// the robot picks a random move between the items in the array.
 const computerPlay = function () {
-  const moves = ['rock', 'paper', 'scissors'];
+  const moves = ['🪨', '📄', '✂️'];
   return moves[Math.floor(Math.random() * moves.length)];
 };
 
@@ -27,74 +32,65 @@ const playRound = function (event) {
   if (playing) {
     let roundResult = '';
     if (event.target === btnRock) {
-      playerSelection = 'rock';
+      playerSelection = '🪨';
     } else if (event.target === btnPaper) {
-      playerSelection = 'paper';
+      playerSelection = '📄';
     } else {
-      playerSelection = 'scissors';
+      playerSelection = '✂️';
     }
 
     const computerSelection = computerPlay();
 
     // Tie
     if (playerSelection === computerSelection) {
-      roundResult = `Tie! No one wins this round. The current score is ${playerScore} vs. ${computerScore}`;
+      roundResult = `<br>Tie! No won won this round 🤨<br>
+        The current score is ${playerScore} 🆚 ${computerScore}`;
 
-      pResults.textContent = `You picked ${playerSelection} and the computer picked ${computerSelection}.
-    ${roundResult}`;
-      container.appendChild(pResults);
+      resultContent(
+        `You picked ${playerSelection} and the robot picked ${computerSelection}.
+          ${roundResult}`
+      );
 
       //Player win conditions.
     } else if (
-      (playerSelection === 'scissors' && computerSelection === 'paper') ||
-      (playerSelection === 'rock' && computerSelection === 'scissors') ||
-      (playerSelection === 'paper' && computerSelection === 'rock')
+      (playerSelection === '✂️' && computerSelection === '📄') ||
+      (playerSelection === '🪨' && computerSelection === '✂️') ||
+      (playerSelection === '📄' && computerSelection === '🪨')
     ) {
       playerScore++;
 
-      roundResult = `You won this round! The score is now ${playerScore} vs. ${computerScore}`;
+      roundResult = `<br>You won this round! 😎<br>
+      The score is now ${playerScore} 🆚 ${computerScore}`;
 
-      pResults.textContent = `You picked ${playerSelection} and the computer picked ${computerSelection}.
-    ${roundResult}`;
-      container.appendChild(pResults);
+      resultContent(`You picked ${playerSelection} and the robot picked ${computerSelection}.
+      ${roundResult}`);
 
       // Machine win conditions.
     } else {
       computerScore++;
-      roundResult = `You lose this round! The score is now ${playerScore} vs. ${computerScore}`;
+      roundResult = `<br>You lose this round! 😭<br>
+      The score is now ${playerScore} 🆚 ${computerScore}`;
 
-      pResults.textContent = `You picked ${playerSelection} and the computer picked ${computerSelection}.
-    ${roundResult}`;
-      container.appendChild(pResults);
+      resultContent(`You picked ${playerSelection} and the robot picked ${computerSelection}.
+      ${roundResult}`);
     }
   }
   if (computerScore === 5) {
-    pResults.textContent = `The computer won. Try again! \n The final score is ${playerScore} vs. ${computerScore}.`;
-    container.appendChild(pResults);
+    resultContent(
+      `<p style="color:red;">🦾🤖 Too bad. the robot won 🦾🤖 <br>   
+      The final score is ${playerScore} 🆚 ${computerScore}<br>
+      Refresh the page and beat the robot!</p>`
+    );
     playing = false;
   } else if (playerScore === 5) {
-    pResults.textContent = `Congratulations! You won! \n The final score is ${playerScore} vs. ${computerScore}.`;
-    container.appendChild(pResults);
+    resultContent(
+      `<p style="color:green">🏆 Congratulations! You won!! 🏆<br> 
+      The final score is ${playerScore} 🆚 ${computerScore}<br>
+      Refresh the page and beat the robot again!</p>`
+    );
     playing = false;
   }
 };
-
-// Plays 5 rounds of rock, paper and scissors and print the final results.
-// const playFiveRounds = function() {
-//   for (let i = 1; i <= 5; i++) {
-//     playRound();
-//   }
-
-//   if (playerScore === computerScore) {
-//     console.log(`It's a Tie! \n The final score is ${playerScore} vs. ${computerScore}.`);
-//   } else if (playerScore < computerScore) {
-//     console.log(`The computer won. Try again! \n The final score is ${playerScore} vs. ${computerScore}.`);
-//   } else {
-//     console.log(`Congratulations! You won! \n The final score is ${playerScore} vs. ${computerScore}.`);
-//   }
-// };
-
-// playFiveRounds();
 
 btnRock.addEventListener('click', playRound);
 btnPaper.addEventListener('click', playRound);
