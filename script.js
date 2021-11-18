@@ -68,7 +68,7 @@ const playRound = function (event) {
       // Machine win conditions.
     } else {
       computerScore++;
-      roundResult = `<br>You lose this round! 😭<br>
+      roundResult = `<br>You lost this round! 😭<br>
       The score is now ${playerScore} 🆚 ${computerScore}`;
 
       resultContent(`You picked ${playerSelection} and the robot picked ${computerSelection}.
